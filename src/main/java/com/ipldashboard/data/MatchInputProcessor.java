@@ -5,13 +5,10 @@ import com.ipldashboard.model.Match;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.boot.autoconfigure.web.format.DateTimeFormatters;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 public class MatchInputProcessor implements ItemProcessor<MatchInput, Match> {
 

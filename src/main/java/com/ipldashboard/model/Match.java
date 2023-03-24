@@ -1,9 +1,9 @@
 package com.ipldashboard.model;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.time.LocalDate;
 @Entity
 public class Match {
     @Id

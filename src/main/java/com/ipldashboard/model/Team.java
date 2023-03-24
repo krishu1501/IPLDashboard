@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class Team {
     @Id
@@ -12,6 +14,8 @@ public class Team {
     private String teamName;
     private long totalMatches;
     private long totalWins;
+    private transient List<Match> matches;
+
 
     public Team() {
     }
@@ -58,6 +62,13 @@ public class Team {
 
     public void setTotalWins(long totalWins) {
         this.totalWins = totalWins;
+    }
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
     }
 
     @Override

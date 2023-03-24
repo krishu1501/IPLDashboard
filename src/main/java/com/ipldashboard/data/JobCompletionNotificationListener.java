@@ -52,8 +52,6 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
                         return team;
                     }));
             teamMap.values().forEach(team -> em.persist(team));
-//            teamMap.values().forEach(System.out::println);
-
         }
     }
 }

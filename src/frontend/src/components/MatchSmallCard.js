@@ -13,4 +13,3 @@ export const MatchSmallCard = ({ match, teamName }) => {
   );
 }
 
-export default MatchSmallCard;

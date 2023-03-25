@@ -15,4 +15,3 @@ export const MatchDetailCard = ({match, teamName}) => {
   );
 }
 
-export default MatchDetailCard;

@@ -1,7 +1,7 @@
 import { React, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
-import MatchDetailCard from '../components/MatchDetailCard';
-import MatchSmallCard from '../components/MatchSmallCard';
+import { MatchDetailCard } from '../components/MatchDetailCard';
+import { MatchSmallCard } from '../components/MatchSmallCard';
 
 export const TeamPage = () => {
     const [team, setTeam] = useState({});
@@ -29,5 +29,3 @@ export const TeamPage = () => {
     
   );
 }
-
-export default TeamPage;

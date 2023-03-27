@@ -14,7 +14,7 @@ export const MatchPage = () => {
     const fetchMatches = async () => {
       const matchYear = searchParams.get("year");
       setYear(matchYear);
-      const response = await fetch(`http://localhost:8080/team/${teamName}/matches?year=${matchYear}`)
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${matchYear}`)
       const matchList = await response.json();
       setMatches(matchList);
     }
@@ -35,7 +35,7 @@ export const MatchPage = () => {
           </h1>
           {matches?.length === 0 ?
             <h2>No matches in {year}</h2> :
-            matches.map((match) => <MatchDetailCard match={match} teamName={teamName} />)}
+            matches.map((match) => <MatchDetailCard key={match.id} match={match} teamName={teamName} />)}
         </div>
       </div>
     </div>

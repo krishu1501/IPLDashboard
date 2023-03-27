@@ -12,7 +12,7 @@ export const TeamPage = () => {
     useEffect(
         () => {
             const fetchTeam = async () => {
-                const response = await fetch(`http://localhost:8080/team/${teamName}`);
+                const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
                 const team = await response.json();
                 setTeam(team);
             }
@@ -41,7 +41,7 @@ export const TeamPage = () => {
                 </div>
                 {team.matches?.slice(1).map((match) => {
                     return (
-                        <div className="match-small-section">
+                        <div key={match.id} className="match-small-section">
                             <MatchSmallCard match={match} teamName={team.teamName} />
                         </div>)
                 })}

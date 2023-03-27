@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { MatchSmallCard } from '../components/MatchSmallCard';
+import { MatchDetailCard } from '../components/MatchDetailCard';
 
 export const MatchPage = () => {
   const [matches, setMatches] = useState();
@@ -19,8 +19,9 @@ export const MatchPage = () => {
   if(!matches) return <h1>"No Match found!"</h1>;
   return (
     <div className="MatchPage">
-        <h1>MatchPage</h1>
-        {matches?.map((match) => <MatchSmallCard match={match} teamName={teamName}/>)}
+        <h2>Matches</h2>
+        <h1>{teamName}</h1>
+        {matches?.map((match) => <MatchDetailCard match={match} teamName={teamName}/>)}
     </div>
     
   );

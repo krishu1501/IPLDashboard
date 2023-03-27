@@ -1,6 +1,7 @@
 .MatchDetailCard{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 5px;
     margin-bottom: 30px;
     padding: 10px;
     .match-date, .match-venue, .match-toss-winner{

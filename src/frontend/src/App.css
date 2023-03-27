@@ -5,8 +5,10 @@
 
 .won-card{
   background-color: #0a5e0a;
+  border-radius: 10px;
 }
 
 .lost-card{
   background-color: #9B3010;
+  border-radius: 10px;
 }

@@ -4,6 +4,7 @@
     grid-template-rows: 1fr 1fr 1fr;
     column-gap: 10px;
     row-gap: 10px;
+    max-height: 700px;
     .team-name-section{
         grid-column: span 3;
         justify-self: start;

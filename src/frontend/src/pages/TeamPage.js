@@ -43,7 +43,14 @@ export const TeamPage = () => {
                     <MatchSmallCard match={match} teamName={team.teamName} />
                 </div>)
             })}
-            <div className="more-link"><a href="#">More &#62;</a></div>
+            <div className="more-link">
+                <a href="#">
+                <Link to={`/teams/${teamName}/matches?year=${process.env.REACT_APP_MATCH_END_YEAR}`}>
+                    More &#62;
+                </Link>
+                </a>
+
+            </div>
         </div>
 
     );

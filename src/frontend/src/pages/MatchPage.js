@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { MatchDetailCard } from '../components/MatchDetailCard';
+import { NavBar } from '../components/NavBar';
 import { YearSelector } from '../components/YearSelector';
 import './MatchPage.scss';
 
@@ -22,17 +23,20 @@ export const MatchPage = () => {
   if (!matches) return <h1>"No Match found!"</h1>;
   return (
     <div className="MatchPage">
-      <div className="year-selector">
-        <h3>Select Year</h3>
-        <YearSelector teamName={teamName} />
-      </div>
-      <div className="Matches">
-        <h1 className="heading-section">
-          <Link to={`/teams/${teamName}`}> {teamName} </Link> matches in {year}
-        </h1>
-        {matches?.length === 0 ?
-          <h2>No matches in {year}</h2> :
-          matches.map((match) => <MatchDetailCard match={match} teamName={teamName} />)}
+      <NavBar/>
+      <div className='match-page-content'>
+        <div className="year-selector">
+          <h3>Select Year</h3>
+          <YearSelector teamName={teamName} />
+        </div>
+        <div className="matches-section">
+          <h1 className="heading-section">
+            <Link to={`/teams/${teamName}`}> {teamName} </Link> matches in {year}
+          </h1>
+          {matches?.length === 0 ?
+            <h2>No matches in {year}</h2> :
+            matches.map((match) => <MatchDetailCard match={match} teamName={teamName} />)}
+        </div>
       </div>
     </div>
 

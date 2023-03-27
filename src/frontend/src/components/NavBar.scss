@@ -1,0 +1,7 @@
+.NavBar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 5fr;
+    column-gap: 40px;
+    padding: 5px;
+    margin: 10px;
+}

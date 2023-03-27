@@ -1,13 +1,15 @@
-.MatchPage {
+.match-page-content {
     display: grid;
     grid-template-columns: 1fr 4fr;
     .year-selector{
         justify-self: end;
         padding: 20px;
     }
-    .heading-section{
-        font-size: 2rem;
-        padding: 10px;
-        margin: 10px 0;
+    .matches-section{
+        .heading-section{
+            font-size: 2rem;
+            padding: 10px;
+            margin: 10px 0;
+        }
     }
 }

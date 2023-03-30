@@ -4,18 +4,21 @@ public class MatchInput {
     private String id;
     private String city;
     private String date;
-    private String player_of_match;
-    private String venue;
-    private String neutral_venue;
+    private String season;
+    private String matchNumber;
     private String team1;
     private String team2;
-    private String toss_winner;
-    private String toss_decision;
-    private String winner;
-    private String result;
-    private String result_margin;
-    private String eliminator;
+    private String venue;
+    private String tossWinner;
+    private String tossDecision;
+    private String superOver;
+    private String winningTeam;
+    private String wonBy;
+    private String margin;
     private String method;
+    private String playerOfMatch;
+    private String team1Players;
+    private String team2Players;
     private String umpire1;
     private String umpire2;
     
@@ -37,23 +40,17 @@ public class MatchInput {
     public void setDate(String date) {
         this.date = date;
     }
-    public String getPlayer_of_match() {
-        return player_of_match;
+    public String getSeason() {
+        return season;
     }
-    public void setPlayer_of_match(String player_of_match) {
-        this.player_of_match = player_of_match;
+    public void setSeason(String season) {
+        this.season = season;
     }
-    public String getVenue() {
-        return venue;
+    public String getMatchNumber() {
+        return matchNumber;
     }
-    public void setVenue(String venue) {
-        this.venue = venue;
-    }
-    public String getNeutral_venue() {
-        return neutral_venue;
-    }
-    public void setNeutral_venue(String neutral_venue) {
-        this.neutral_venue = neutral_venue;
+    public void setMatchNumber(String matchNumber) {
+        this.matchNumber = matchNumber;
     }
     public String getTeam1() {
         return team1;
@@ -67,47 +64,71 @@ public class MatchInput {
     public void setTeam2(String team2) {
         this.team2 = team2;
     }
-    public String getToss_winner() {
-        return toss_winner;
+    public String getVenue() {
+        return venue;
     }
-    public void setToss_winner(String toss_winner) {
-        this.toss_winner = toss_winner;
+    public void setVenue(String venue) {
+        this.venue = venue;
     }
-    public String getToss_decision() {
-        return toss_decision;
+    public String getTossWinner() {
+        return tossWinner;
     }
-    public void setToss_decision(String toss_decision) {
-        this.toss_decision = toss_decision;
+    public void setTossWinner(String tossWinner) {
+        this.tossWinner = tossWinner;
     }
-    public String getWinner() {
-        return winner;
+    public String getTossDecision() {
+        return tossDecision;
     }
-    public void setWinner(String winner) {
-        this.winner = winner;
+    public void setTossDecision(String tossDecision) {
+        this.tossDecision = tossDecision;
     }
-    public String getResult() {
-        return result;
+    public String getSuperOver() {
+        return superOver;
     }
-    public void setResult(String result) {
-        this.result = result;
+    public void setSuperOver(String superOver) {
+        this.superOver = superOver;
     }
-    public String getResult_margin() {
-        return result_margin;
+    public String getWinningTeam() {
+        return winningTeam;
     }
-    public void setResult_margin(String result_margin) {
-        this.result_margin = result_margin;
+    public void setWinningTeam(String winningTeam) {
+        this.winningTeam = winningTeam;
     }
-    public String getEliminator() {
-        return eliminator;
+    public String getWonBy() {
+        return wonBy;
     }
-    public void setEliminator(String eliminator) {
-        this.eliminator = eliminator;
+    public void setWonBy(String wonBy) {
+        this.wonBy = wonBy;
+    }
+    public String getMargin() {
+        return margin;
+    }
+    public void setMargin(String margin) {
+        this.margin = margin;
     }
     public String getMethod() {
         return method;
     }
     public void setMethod(String method) {
         this.method = method;
+    }
+    public String getPlayerOfMatch() {
+        return playerOfMatch;
+    }
+    public void setPlayerOfMatch(String playerOfMatch) {
+        this.playerOfMatch = playerOfMatch;
+    }
+    public String getTeam1Players() {
+        return team1Players;
+    }
+    public void setTeam1Players(String team1Players) {
+        this.team1Players = team1Players;
+    }
+    public String getTeam2Players() {
+        return team2Players;
+    }
+    public void setTeam2Players(String team2Players) {
+        this.team2Players = team2Players;
     }
     public String getUmpire1() {
         return umpire1;
@@ -121,7 +142,9 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
+
     
+       
    
 
 }

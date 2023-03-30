@@ -1,5 +1,5 @@
 # IPLDashboard
-A Dashboard with data of IPL (Indian Premier League, cricket matches) matches played between 2008-2020.
+A Dashboard with data of IPL (Indian Premier League, cricket matches) matches played between 2008-2022.
 
 HomePage:
 
@@ -23,4 +23,4 @@ Matches Page:
 - React JS
 
 ## Dataset Used
-https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020/code
+https://www.kaggle.com/datasets/vora1011/ipl-2008-to-2021-all-match-dataset

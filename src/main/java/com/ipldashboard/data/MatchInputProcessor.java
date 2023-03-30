@@ -1,14 +1,15 @@
 package com.ipldashboard.data;
 
 
-import com.ipldashboard.model.Match;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.lang.NonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import com.ipldashboard.model.Match;
 
 public class MatchInputProcessor implements ItemProcessor<MatchInput, Match> {
 
@@ -20,28 +21,40 @@ public class MatchInputProcessor implements ItemProcessor<MatchInput, Match> {
     match.setId(Long.parseLong(matchInput.getId()));
     match.setCity(matchInput.getCity());
     match.setDate(LocalDate.parse(matchInput.getDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-    match.setPlayerOfMatch(matchInput.getPlayer_of_match());
+    match.setPlayerOfMatch(matchInput.getPlayerOfMatch());
     match.setVenue(matchInput.getVenue());
 
     String firstInningsTeam, secondInningsTeam;
-    if("bat".equals(matchInput.getToss_decision())){
-        firstInningsTeam = matchInput.getToss_winner();
+    if("bat".equals(matchInput.getTossDecision())){
+        firstInningsTeam = matchInput.getTossWinner();
         secondInningsTeam = firstInningsTeam.equals(matchInput.getTeam1()) ? matchInput.getTeam2() : matchInput.getTeam1();
     }
     else{
-        secondInningsTeam = matchInput.getToss_winner();
+        secondInningsTeam = matchInput.getTossWinner();
         firstInningsTeam = secondInningsTeam.equals(matchInput.getTeam1()) ? matchInput.getTeam2() : matchInput.getTeam1();
     }
     //setting the team who bat first as team1
     match.setTeam1(firstInningsTeam);
     match.setTeam2(secondInningsTeam);
 
-    match.setTossWinner(matchInput.getToss_winner());
-    match.setTossDecision(matchInput.getToss_decision());
-    match.setMatchWinner(matchInput.getWinner());
-    match.setResult(matchInput.getResult());
-    match.setResultMargin(matchInput.getResult_margin());
-    match.setEliminator(matchInput.getEliminator().equalsIgnoreCase("Y") ? true : false);
+    //converting format to comma separated player names , by removing characters []' and unnecessary whitespace
+    String team1PlayersString = matchInput.getTeam1Players().replaceAll("[\\[\\]']", "").replaceAll("\\s*,\\s*", ",").trim();
+    String team2PlayersString = matchInput.getTeam2Players().replaceAll("[\\[\\]']", "").replaceAll("\\s*,\\s*", ",").trim();
+    if(firstInningsTeam.equals(matchInput.getTeam1())){
+      match.setTeam1PlayersString(team1PlayersString);
+      match.setTeam2PlayersString(team2PlayersString);
+    }
+    else{
+      match.setTeam1PlayersString(team2PlayersString);
+      match.setTeam2PlayersString(team1PlayersString);
+    }
+
+    match.setTossWinner(matchInput.getTossWinner());
+    match.setTossDecision(matchInput.getTossDecision());
+    match.setMatchWinner(matchInput.getWinningTeam());
+    match.setResult((matchInput.getWonBy()).toLowerCase());
+    match.setResultMargin(matchInput.getMargin());
+    match.setEliminator(matchInput.getSuperOver().equalsIgnoreCase("Y") ? true : false);
     match.setUmpire1(matchInput.getUmpire1());
     match.setUmpire2(matchInput.getUmpire2());
 

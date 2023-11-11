@@ -47,7 +47,7 @@ export const TeamPage = () => {
                 })}
                 <div className="more-link">
                     <Link to={`/teams/${teamName}/matches?year=${process.env.REACT_APP_MATCH_END_YEAR}`}>
-                        More &#62;
+                        More matches &#62;
                     </Link>
                 </div>
             </div>

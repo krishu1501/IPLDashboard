@@ -37,7 +37,7 @@ public class MatchInputProcessor implements ItemProcessor<MatchInput, Match> {
     match.setTeam1(firstInningsTeam);
     match.setTeam2(secondInningsTeam);
 
-    //converting format to comma separated player names , by removing characters []' and unnecessary whitespace
+    //converting format to comma separated player names , by removing characters [ ] ' and unnecessary whitespace
     String team1PlayersString = matchInput.getTeam1Players().replaceAll("[\\[\\]']", "").replaceAll("\\s*,\\s*", ",").trim();
     String team2PlayersString = matchInput.getTeam2Players().replaceAll("[\\[\\]']", "").replaceAll("\\s*,\\s*", ",").trim();
     if(firstInningsTeam.equals(matchInput.getTeam1())){

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @CrossOrigin
@@ -33,12 +36,16 @@ public class TeamController {
     @GetMapping("/team/{teamName}")
     public Team getTeam(@PathVariable String teamName){
         Team team = this.teamRepository.getByTeamName(teamName);
+        if(team==null){
+            throw new ResponseStatusException(NOT_FOUND, "Team not found");
+        }
         team.setMatches(this.matchRepository.getMatchesByTeamName(teamName,4));
         return team;
     }
 
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getTeamMatchesByYear(@PathVariable("teamName") String teamName, @RequestParam("year") int year){
+        getTeam(teamName);
         LocalDate dateStart = LocalDate.of(year , 1, 1);
         LocalDate dateEnd = LocalDate.of(year+1 , 1, 1);
         return this.matchRepository.getMatchesByTeamBetweenDate(teamName, dateStart, dateEnd);

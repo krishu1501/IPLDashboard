@@ -9,17 +9,25 @@ import './TeamPage.scss';
 export const TeamPage = () => {
     const [team, setTeam] = useState({});
     const { teamName } = useParams();
+    const [isTeamPresent, setIsTeamPresent] = useState(true);
     useEffect(
         () => {
             const fetchTeam = async () => {
                 const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
+                if(response.status == 404){
+                    setTeam({});
+                    setIsTeamPresent(false);
+                    return;
+                }
                 const team = await response.json();
+                setIsTeamPresent(true);
                 setTeam(team);
             }
             fetchTeam();
         }, [teamName]
     )
-    if (!team.teamName) return <h1> Team Not found!!!</h1>
+    if(isTeamPresent && !team.teamName) return <h1> Loading Team... </h1>;
+    if (!team.teamName) return <h1> Invalid team name!!! </h1>;
     return (
         <div className="TeamPage">
             <NavBar />

@@ -10,17 +10,28 @@ export const MatchPage = () => {
   const { teamName } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [year, setYear] = useState(process.env.REACT_APP_MATCH_END_YEAR);
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchMatches = async () => {
       const matchYear = searchParams.get("year");
+      if(isNaN(matchYear)){
+        setError({message: "Invalid Year selected"});
+        return;
+      }
       setYear(matchYear);
-      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${matchYear}`)
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${matchYear}`);
+      if(response.status == 404){
+        setError({message: "No Matches found"});
+        return;
+      }
       const matchList = await response.json();
       setMatches(matchList);
+      setError(null);
     }
     fetchMatches();
   }, [teamName, searchParams])
-  if (!matches) return <h1>"No Match found!"</h1>;
+  if (error != null) return <h1> {error.message} </h1>;
+  if (!matches) return <h1> Loading matches... </h1>;
   return (
     <div className="MatchPage">
       <NavBar/>

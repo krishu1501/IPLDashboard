@@ -45,6 +45,7 @@ public class TeamController {
 
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getTeamMatchesByYear(@PathVariable("teamName") String teamName, @RequestParam("year") int year){
+        getTeam(teamName);
         LocalDate dateStart = LocalDate.of(year , 1, 1);
         LocalDate dateEnd = LocalDate.of(year+1 , 1, 1);
         return this.matchRepository.getMatchesByTeamBetweenDate(teamName, dateStart, dateEnd);

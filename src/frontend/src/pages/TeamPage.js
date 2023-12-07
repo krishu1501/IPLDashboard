@@ -14,7 +14,6 @@ export const TeamPage = () => {
         () => {
             const fetchTeam = async () => {
                 const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
-                console.log(response);
                 if(response.status == 404){
                     setTeam({});
                     setIsTeamPresent(false);
